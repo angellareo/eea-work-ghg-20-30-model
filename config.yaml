@@ -1,0 +1,43 @@
+%YAML 1.2
+---
+runName: "test01"
+
+sectorIDs: ["Sector1", "Sector2", "Sector3","Sector4",
+                "Sector5", "Sector6", "Sector7","Sector8",
+                "Sector9", "Sector10", "Sector11","Sector12",
+                "Sector13", "Sector14", "Sector15","Sector16"]
+
+e0: [10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10]
+
+t0: [20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20]
+
+Scenarios:
+  
+  GND:
+    ef: [1,2,3,4,5,4,3,2,1,2,3,4,5,4,3,2]
+    Sectors:
+      Sector1:
+        indV: e
+        type: Interpolated
+        maxIncr: 3
+        maxDecr: 5
+        data:
+          2020: 10
+          2026: 4
+
+  DEC:
+    ef: [5,4,3,2,1,2,3,4,5,4,3,2,1,2,3,4]
+    Sectors:
+      Sector1:
+        indV: e
+        type: Predetermined
+        data: [5,4,3,2,1,2,3,4,5,4,0]
+      Sector2:
+        indV: e
+        type: Dependent
+        maxIncr: 3
+        maxDecr: 5
+        data:
+          assSector: Sector1
+          g: 0.2
+          
